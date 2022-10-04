@@ -23,7 +23,7 @@ import numbers
 from copy import deepcopy
 import hashlib
 import unicodedata
-import pycoin
+import pycoin.contrib.ripemd160
 from bitcoinlib.main import *
 _logger = logging.getLogger(__name__)
 
