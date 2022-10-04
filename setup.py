@@ -44,7 +44,8 @@ install_requires = [
       'pycryptodome>=3.14.1',
       'SQLAlchemy>=1.4.28',
       'numpy==1.19.5;python_version<"3.8"',
-      'numpy>=1.21.0;python_version>="3.8"'
+      'numpy>=1.21.0;python_version>="3.8"',
+      'pycoin==0.92.20220529'
 ]
 
 kwargs['install_requires'] = install_requires
