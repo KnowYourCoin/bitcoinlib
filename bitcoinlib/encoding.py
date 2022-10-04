@@ -23,6 +23,7 @@ import numbers
 from copy import deepcopy
 import hashlib
 import unicodedata
+import pycoin
 from bitcoinlib.main import *
 _logger = logging.getLogger(__name__)
 
@@ -870,7 +871,13 @@ def hash160(string):
 
     :return bytes: RIPEMD-160 hash of script
     """
-    return hashlib.new('ripemd160', hashlib.sha256(string).digest()).digest()
+    # ripemd160 disabled in latest OpenSSL versions
+    # use pycoin's implementation
+    # See https://github.com/HathorNetwork/hathor-core/pull/435/files#diff-e14d2689e57bd0222252ad231db9fe4b80b0c7fb0e04108ea86e8b9fc98001d8R59
+    # return hashlib.new('ripemd160', hashlib.sha256(string).digest()).digest()
+    return pycoin.contrib.ripemd160.ripemd160(hashlib.sha256(string).digest())
+    
+    
 
 
 def bip38_decrypt(encrypted_privkey, password):
